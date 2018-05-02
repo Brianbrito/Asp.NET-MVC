@@ -1,0 +1,87 @@
+﻿@model MaestroD.Models.Jugador
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Jugador</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.JugadorId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Posicion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <Select class="form-control" id="Posicion" name="Posicion">
+                    <option> Pitcher </option>
+                    <option> Catcher </option>
+                    <option>  Primera base </option>
+                    <option> Segunda base </option>
+                    <option>  Tercera base </option>
+                    <option> Short stop </option>
+                    <option> Jardinero izquierdo </option>
+                    <option>  Jardinero central </option>
+                    <option> Jardinero derecho </option>
+                    <option> Bateador designado  </option>
+                </Select>
+                @*@Html.EditorFor(model => model.Posicion, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Posicion, "", new { @class = "text-danger" })
+            </div>
+        @*</div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NombreEquipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <Select class="form-control" id="NombreEquipo" name="NombreEquipo">
+                    <option> Aguilas </option>
+                    <option> Escogido</option>
+                    <option> Estrellas </option>
+                    <option> Gigantes </option>
+                    <option> Licey </option>
+                    <option> Toros </option>
+                </Select>
+                @Html.EditorFor(model => model.NombreEquipo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NombreEquipo, "", new { @class = "text-danger" })
+            </div> *@
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MaestroD.Models.Equipo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Agregar")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Provincia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreEquipo)
+        </th>
+
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Estado)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Provincia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreEquipo)
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id = item.NombreEquipo }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.NombreEquipo })
+        </td>
+    </tr>
+        }
+    }
+
+</table>

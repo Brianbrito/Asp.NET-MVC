@@ -1,0 +1,71 @@
+﻿@model MaestroD.Models.Equipo
+
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <h4>Equipo</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.NombreEquipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <Select class="form-control" id="NombreEquipo" name="NombreEquipo">
+                    <option> Aguilas </option>
+                    <option> Escogido</option>
+                    <option> Estrellas </option>
+                    <option> Gigantes </option>
+                    <option> Licey </option>
+                    <option> Toros </option>
+                </Select>
+                @Html.ValidationMessageFor(model => model.NombreEquipo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pais, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <Select class="form-control" id="Pais" name="Pais">
+                    <option> Republica Dominicana </option>
+                </Select>
+                @Html.ValidationMessageFor(model => model.Pais, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Provincia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <Select class="form-control" id="Provincia" name="Provincia">
+                    <option> El Cibao </option>
+                    <option> Santo Domingo </option>
+                    <option> San Pedro de Macoris </option>
+                    <option> La Romana </option>
+                </Select>
+                @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+       <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default">
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
